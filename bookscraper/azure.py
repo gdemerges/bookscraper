@@ -1,10 +1,15 @@
 import psycopg2
+import json
 
-hostname = 'dem-gui-postgre1.postgres.database.azure.com'
-database = 'bookscraper'
-username = 'gdemerges'
-password = 'c_}nsG6xr~Zhu"P'
-port = 5432
+# Lire les informations de connexion depuis le fichier config.json
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
+hostname = config['hostname']
+database = config['database']
+username = config['username']
+password = config['password']
+port = config['port']
 
 conn = psycopg2.connect(
     host=hostname,
